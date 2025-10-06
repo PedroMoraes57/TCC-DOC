@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>{% block title %}Home | D.O.C{% endblock %}</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel='stylesheet' type='text/css' media='screen' href='{% static "css/base.css" %}'>
+    <script src="{% static 'js/base.js' %}"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        function voltarpaginainicial() {
+            window.location.href = "{% url 'home' %}";
+        }
+        </script>
+    {% block style.css %}{% endblock %}
+    {% block digitalizar.css%}{% endblock %}
+    {% block header.js %}{% endblock %}
+    <script src="https://kit.fontawesome.com/44090f5f38.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header {% block header_class %}{% endblock %}">
+        <div class="left-header">
+            <img src="/static/img/logo-DOC.png" alt="logo-D.O.C" onclick="voltarpaginainicial()">
+            <nav class="nav-left">
+                <a href="{% url 'Digitalizar_Documentos'%}">Digitalizar</a>
+                <a href="{% url 'perfil' %}">Documentos</a>
+                <a href="#">Quem Somos</a>
+            </nav>
+        </div>
+        <div class="right-header">
+            <nav class="nav-right">
+                <div class="search-box">
+                    <input type="search" name="search" id="search" placeholder="Encontre seus documentos aqui...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>        
+                <i href="{% url 'perfil' %}" class="fa-solid fa-user"></i>          
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="footer-principal">
+        <div class="footer">
+            <div class="footer-nav">
+                <img src="{% static 'img/logo-DOC.png' %}" alt="">
+            </div>
+            <div class="footer-nav">
+                <h4 class="topicos-footer">Navegação</h4>
+                <a href="#oqcomo" class="textos-footer">Sobre Nós</a>
+                <a href="#texto" class="textos-footer">Como Funciona</a>
+                <a href="#vantagens" class="textos-footer">Vantagens</a>
+                <a href="#feedbacks" class="textos-footer">Avaliações</a>
+                <a href="#faqs" class="textos-footer">FAQs</a>
+            </div>
+    
+            <div class="footer-nav">
+                <h4 class="topicos-footer">Digitalização</h4>
+                <a href="{% url 'Digitalizar_Documentos'%}" class="textos-footer">Digitalizar Documento</a>
+                <a href="{% url 'perfil' %}" class="textos-footer">Visualizar Documento</a>
+            </div>
+    
+            <div class="footer-nav">
+                <h4 class="topicos-footer">Sua Conta</h4>
+                <a href="{% url 'perfil' %}" class="textos-footer">Minha Conta</a>
+                <a href="{% url 'login' %}" class="textos-footer">Fazer Login</a>
+                <a href="{% url 'login' %}" class="textos-footer">Cadastrar-se</a>
+            </div>
+    
+            <div class="footer-nav redes">
+                <h4 class="topicos-footer">Redes Sociais</h4>
+                <div class="redes-i">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr class="hr-footer">
+        <div class="footer-down">
+            <p>&copy;2025 D.O.C - Todos os direitos reservados</p>
+            <a href="">Política de Privacidade</a>
+            <a href="">Termos e Condições</a>
+            <a href="">Política de Cookies</a>
+       </div>
+    </footer>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>

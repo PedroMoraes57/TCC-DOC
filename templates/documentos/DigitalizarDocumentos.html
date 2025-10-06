@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block digitalizar.css %}<link rel='stylesheet' type='text/css' media='screen' href='{% static "css/digitalizar.css" %}'>{% endblock %}
+{% block title%}Digitalizer Documento{% endblock %}
+{% block content %}
+<div id="div_texts_digitalizars">
+    <h2 id="title_Digitalizar">Digitalize seus Documentos</h2>
+    <p id="little_tex_Digitalizar">Rápido, Fácil e Sustentável!</p>
+</div>
+<section id="Anexar_Doc">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label id="label_FileField">
+            <img src="../../static/img/icon-nuvem.png" alt="Ícone de Nuvem" id="icon_document">
+                <h2 id="alert1"><b>Clique</b> para selecionar ou <b>arraste</b> seu arquivo aqui.</h2>
+                <p id="alert2">Formatos disponíveis: PDF, PNG, JPG, JPEG, DOCX</p>
+            {{ form.arquivo }}
+        </label>
+        <button id="botao-remover" style="display: none;">✖ Remover Arquivo</button>
+        <br>
+        <div>
+            {{ form.nome }}
+            <button id="botao-enviar" type="submit">Salvar</button>
+        </div>
+    </form>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const inputArquivo = document.getElementById('id_arquivo');
+    const dropArea = document.getElementById('label_FileField');
+    let containerTexto1 = document.getElementById('alert1');
+    let containerTexto2 = document.getElementById('alert2');
+    const botaoRemover = document.getElementById('botao-remover');
+    const form = document.querySelector('form');
+    const tiposPermitidos = ['pdf', 'png', 'jpg', 'jpeg', 'docx'];
+    const icon_formatos = {
+        pdf:"{% static 'img/icon_pdf.png'%}",
+        png:"{% static 'img/icon_pdf.png'%}",
+        jpg:"{% static 'img/icon_pdf.png'%}",
+        jpeg:"{% static 'img/icon_pdf.png'%}",
+        docx:"{% static 'img/icon_pdf.png'%}",
+    };
+    const icon_nuvem = "{% static 'img/icon_pdf.png'%}"
+
+    function documentoAnexado(input){
+        if (!input.files.length) return;
+        const nomeArquivo = input.files[0].name;
+        containerTexto1.innerText =  nomeArquivo + " anexado com sucesso! ";
+        containerTexto2.innerText = "Defina o nome do seu arquivo, salve e espere até que seu documento seja digitalizado!"; 
+        botaoRemover.style.display="block";
+    }
+
+    if (inputArquivo){
+        inputArquivo.addEventListener("change", function(){
+            documentoAnexado(this)
+        });
+    }
+
+    botaoRemover.addEventListener("click", function(){
+        inputArquivo.value="";
+        alert1.innerHTML = "<b>Clique</b> para selecionar ou <b>arraste</b> seu arquivo aqui.";
+        alert2.innereHTML = "Formatos disponíveis: PDF, PNG, JPG, JPEG, DOCX"
+        botaoRemover.style.display="none"
+    });
+
+    if(!dropArea) return;
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, e => {
+            e.preventDefault()
+            e.stopPropagation();
+        });
+    });
+
+    dropArea.addEventListener('dragenter', () => dropArea.classList.add('dragover'));
+    dropArea.addEventListener('dragover', () => dropArea.classList.add('dragover'));
+    dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
+
+    dropArea.addEventListener('drop', (e) => {
+        dropArea.classList.remove('dragover');
+        if(e.dataTransfer && e.dataTransfer.files.length > 0){
+            inputArquivo.files = e.dataTransfer.files;
+            documentoAnexado(inputArquivo)
+        }
+    });
+});
+</script>
+{% endblock %}

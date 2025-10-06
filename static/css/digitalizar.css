@@ -1,0 +1,162 @@
+:root{
+    --vermelho: #AE2C12;
+    --amarelo: #FFc16E;
+    --azul-escuro: #282f36;
+    --cinza-escuro: #3A444D;
+    --cinza-claro: #5D5D5D;
+    --preto: #07111D;
+    --branco-amarelado: #E4E5DF;
+    --branco: #EFEFEF;
+    --fonte: 'Poppins';
+    --branco_puro: #FFFFFF;
+    --fonte-texto2: #000000;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 0px 100px 0px;
+}
+/*DIGITALIZAR DOCUMENTOS*/
+
+#div_texts_digitalizars{
+    height: 25vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#title_Digitalizar{
+    color: var(--vermelho);
+    font-size: 3rem;
+}
+
+#little_tex_Digitalizar{
+    color: var(--preto);
+    font-size: 1.5rem;
+}
+
+#Anexar_Doc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100vh;
+    background-color: var(--branco_puro);
+    border-radius: 3em;
+
+} 
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    gap: 1rem;
+}
+
+#label_FileField{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 70%;
+    width: 99%;
+    background-color: var(--branco);
+    border: 1px dashed var(--preto);
+    border-radius: 3em;
+    transition: background-color transform 0.2s ease;
+    position: relative;
+    cursor: pointer;
+
+    h2, b{
+        color: var(--azul-escuro);
+    }
+    p{
+        color: var;
+    }
+    img{
+        width: auto;
+        height: 40%;
+    }
+}
+
+#label_FileField.dragover{
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.2s all;
+}
+
+#label_FileField.dragover::after{
+    content: "Solte seu arquivo aqui";
+    background-color: #e7e7e7;
+    color: var(--preto);
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    border-radius: 3rem;
+    position: absolute;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    padding: 15px 30px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+
+}
+@keyframes fadeIn{
+    from{opacity: 0; translate: (-50%, -60%);}
+    to {opacity: 1; transform: translate(-50%, -60%);}
+}
+
+input[type="text"]{
+    outline: none;
+    font-size: 1rem;
+    border: 0.1px solid var(--preto);
+    border-radius: 50px;
+    height: 5.5vh;
+    width: 29vw;
+    padding-left: 10px;
+}
+
+.arquivo-control{
+    opacity: 0;
+}
+
+#botao-enviar{
+    font-size: 1.5rem;
+    background-color: var(--vermelho);
+    color: var(--branco_puro);
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    height: 5.5vh;
+    width: 10vw;
+    cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+#botao-enviar:hover {
+    background-color: #821600;
+}
+
+#botao-remover{
+    font-size: 1.5rem;
+    background-color: var(--vermelho);
+    color: var(--branco_puro);
+    border: 0.5px solid black;
+    border-radius: 10px;
+    height: 5.5vh;
+    width: 15vw;
+    cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+#botao-remover:hover {
+    background-color: #821600;
+}

@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --vermelho: #C84630; /* Tom de vermelho ajustado para a referência */
+    --preto-texto: #333333;
+    --cinza-texto: #5D5D5D;
+    --cinza-subtexto: #999;
+    --cinza-fundo-pagina: #f4f5f7;
+    --branco: #FFFFFF;
+    --borda-suave: #e0e0e0;
+    --fonte: 'Poppins', sans-serif;
+}
+
+/* --- RESET BÁSICO E BODY --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fonte);
+}
+
+body {
+    background-color: var(--cinza-fundo-pagina);
+    color: var(--preto-texto);
+}
+
+/* --- BANNER E SOBREPOSIÇÃO --- */
+.banner-area {
+    width: 100%;
+    height: 280px;
+    background-image: url('../img/banner.png'); /* Certifique-se que o caminho está correto */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sobreposição escura */
+    z-index: -1;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.main-content-wrapper {
+    max-width: 1100px;
+    margin: -160px auto 50px auto; /* Puxa para cima para sobrepor o banner */
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- SEÇÃO DO PERFIL --- */
+.profile-section {
+    display: flex;
+    align-items: flex-end; /* Alinha pela base */
+    gap: 30px;
+    margin-bottom: 20px;
+    padding-left: 20px; /* Espaço para a foto não colar na borda */
+}
+
+.profile-pic {
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profile-info {
+    padding-bottom: 20px;
+    width: 100%; /* Garante que o container ocupe o espaço para o alinhamento */
+}
+
+.profile-info h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--branco);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.edit-profile-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--branco);
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-left: auto; /* Empurra o botão para a direita */
+}
+
+.edit-profile-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.profile-info p {
+    font-size: 1rem;
+    color: var(--cinza-texto);
+    line-height: 1.6;
+}
+
+.profile-info p strong {
+    font-weight: 600;
+    color: var(--preto-texto);
+}
+
+/* --- SEÇÃO DE DOCUMENTOS --- */
+.digital-documents-section {
+    background-color: var(--branco);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--vermelho);
+}
+
+.search-box {
+    position: relative;
+    width: 300px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid var(--borda-suave);
+    border-radius: 25px;
+    font-size: 0.9rem;
+}
+
+.search-box .fa-search {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--preto-texto);
+}
+
+/* --- TABELA DE DOCUMENTOS (ESTILO CARD) --- */
+.documents-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px; /* Espaço vertical entre as linhas/cards */
+}
+
+.documents-table thead th {
+    text-align: left;
+    padding: 0 15px 10px 15px;
+    font-size: 0.8rem;
+    color: var(--cinza-texto);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.documents-table thead th i {
+    font-size: 0.7rem;
+    margin-left: 5px;
+}
+
+.documents-table tbody tr {
+    background-color: var(--cinza-fundo-pagina);
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.documents-table tbody td {
+    padding: 18px 15px;
+    font-size: 0.95rem;
+    color: var(--preto-texto);
+    vertical-align: middle;
+    border: none; /* Remove bordas de célula */
+    border-bottom: 1px solid var(--borda-suave); /* Apenas uma linha sutil */
+}
+
+.documents-table tbody tr td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    font-weight: 600;
+}
+
+.documents-table tbody tr td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Remove a borda inferior da linha */
+.documents-table tbody tr td { border-bottom: none; }
+
+
+/* Estiliza o subtítulo (data/hora) */
+.documents-table tbody td span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--cinza-subtexto);
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.actions-cell {
+    text-align: right;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem; /* Ícones maiores */
+    color: var(--cinza-texto);
+    transition: color 0.2s ease;
+    margin-left: 20px; /* Espaçamento entre ícones */
+    text-decoration: none;
+    display: inline-block;
+}
+
+.action-btn.download-btn:hover {
+    color: #2980b9; /* Azul para download */
+}
+
+.action-btn.delete-btn:hover {
+    color: var(--vermelho); /* Vermelho para deletar */
+}
+
+.no-documents-found {
+    text-align: center;
+    padding: 40px;
+    color: var(--cinza-texto);
+}

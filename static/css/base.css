@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--fonte);
+    smooth-scroll: always;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --vermelho: #AE2C12;
+    --amarelo: #FFc16E;
+    --azul-escuro: #282f36;
+    --cinza-escuro: #3A444D;
+    --cinza-claro: #5D5D5D;
+    --preto: #07111D;
+    --branco-amarelado: #E4E5DF;
+    --branco: #EFEFEF;
+    --fonte: 'Poppins';
+    --branco_puro: #FFFFFF;
+}
+
+
+/* ESTILIZAÇÃO DO HEADER */
+  
+  
+  /* Header especial da landing */
+
+body{
+    background-color: var(--branco);
+}
+
+
+.header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 30%;
+    background-color: var(--vermelho);
+    transition: background 0.3s ease;
+}
+
+.left-header img{
+    width: 100px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+  
+
+.left-header{
+    display: flex;
+    align-items: center;
+}
+.left-header a {
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 60px;
+    position: relative;
+    display: inline-block;
+    color: var(--branco);
+    padding: 5px 0;
+}
+
+.left-header a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--branco); /* <<< define a cor */
+    transition: width 0.3s ease;
+}
+
+.left-header a:hover::after {
+    width: 100%;
+}
+
+.right-header{
+    display: flex;
+    align-items: center;
+}
+
+.nav-right{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.search-box {
+    position: relative;
+    display: inline-block;
+    width: 300px; /* ajuste */
+  }
+  
+.search-box input {
+    padding: 8px;
+    border: 1.5px solid var(--branco);
+    outline: none;
+    width: 300px;
+    border-radius: 20px;
+    margin-right: 70px;
+    background-color: transparent;
+    color: var(--branco);
+}
+  
+.search-box i {
+    position: absolute;
+    right: 15px;   /* colado na direita */
+    top: 50%;
+    font-size: 18px !important;
+    transform: translateY(-50%);
+    color: var(--branco);
+    pointer-events: none; /* ícone não atrapalha clique no input */
+}
+
+.search-box input::placeholder{
+    color: var(--branco);
+    font-size: 12px;
+    padding: 3px;
+    font-weight: 200;
+}
+
+.right-header input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.right-header i{
+    font-size: 30px;
+    color: var(--branco);
+    cursor: pointer;
+}
+
+
+/* ESTILIZAÇÃO DO FOOTER */
+.footer-principal{
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    padding: 100px 100px 50px 0;
+    display: flex;
+    height: 550px;
+    flex-direction: column;
+}
+
+.footer{
+    color: var(--branco);
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-nav h4{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-nav a{
+    text-decoration: none;
+    color: var(--branco);
+    font-size: 16px;
+    transition: 0.2s all;
+    position: relative;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+.footer-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--amarelo); /* <<< define a cor */
+    transition: width 0.3s ease;
+}
+
+.footer-nav a:hover::after {
+    width: 60%;
+}
+
+.footer-nav a:hover{
+    color: var(--amarelo);
+}
+
+.footer-nav.redes{
+    display: flex;
+}
+.redes-i{
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    gap: 30px;
+}
+
+.redes-i i{
+    transition: 0.2s all;
+}
+.redes-i i:hover{
+    color: var(--amarelo);
+}
+
+.hr-footer{
+    margin-bottom: 20px;
+    margin-left: 110px;
+    margin-top: 50px;
+}
+.footer-down{
+    margin-top: 10px;
+    margin-left: 110px;
+    display: flex;
+    gap: 40px;
+}
+.footer-down a{
+    color: var(--branco);
+    transition: 0.3s all;
+}
+.footer-down a:hover{
+    color: var(--amarelo);
+    text-decoration: underline;
+}

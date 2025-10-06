@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style.css %}
+<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/perfil.css' %}" />
+{% endblock %}
+
+{% block title %}Perfil do Usuário{% endblock %}
+
+{% block content %}
+
+<div class="banner-area"></div>
+
+<div class="main-content-wrapper">
+    <section class="profile-section">
+        <img class="profile-pic" src="{% static 'img/PERFILZINHO.png' %}" alt="Foto de perfil" />
+        <div class="profile-info">
+            <h1>
+                {{ user.first_name }} {{ user.last_name }}
+                <a href="#" class="edit-profile-btn" title="Editar Perfil"><i class="fas fa-pencil-alt"></i></a>
+            </h1>
+            <p><strong>E-mail:</strong> {{ user.email }}</p>
+            <p><strong>Telefone:</strong> {{ user.perfil.telefone }}</p>
+        </div>
+    </section>
+
+    <section class="digital-documents-section">
+        <div class="section-header">
+            <h2>Arquivos Digitalizados</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Pesquise seu documento aqui...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <table class="documents-table">
+            <thead>
+                <tr>
+                    <th>Nome do Documento <i class="fas fa-sort"></i></th>
+                    <th>Tipo <i class="fas fa-sort"></i></th>
+                    <th>Setor <i class="fas fa-sort"></i></th>
+                    <th>Assunto <i class="fas fa-sort"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if documentos %}
+                    {% for doc in documentos %}
+                    <tr>
+                        <td>
+                            {{ doc.nome }}
+                            <span>{{ doc.data_criacao|date:"d/m, H:i" }}</span>
+                        </td>
+                        <td>{{ doc.tipo }}</td>
+                        <td>{{ doc.setor }}</td>
+                        <td>{{ doc.assunto }}</td>
+                        <td class="actions-cell">
+                            <a href="{{ doc.arquivo.url }}" class="action-btn download-btn" title="Baixar"><i class="fas fa-download"></i></a>
+                            <form action="{% url 'deletar_documento' doc.id %}" method="post" style="display: inline-block;">
+                                {% csrf_token %}
+                                <button type="submit" class="action-btn delete-btn" title="Excluir"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="5" class="no-documents-found">Nenhum documento encontrado.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </section>
+</div>
+{% endblock %}
