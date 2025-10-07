@@ -3,7 +3,7 @@
 ![DOC Banner](https://img.shields.io/badge/Projeto-D.O.C.-blue)
 
 ## 📄 Sobre o Projeto
-O **D.O.C.** é uma plataforma web inteligente desenvolvida para otimizar a gestão de documentos administrativos no SESI/SENAI. O sistema automatiza a digitalização, organização e classificação de arquivos, utilizando **OCR** e **Inteligência Artificial** para tornar o acesso às informações mais rápido e eficiente.
+O **D.O.C.** é uma plataforma web inteligente desenvolvida para otimizar a gestão de documentos administrativos. O sistema automatiza a digitalização, organização e classificação de arquivos, utilizando **OCR** e **Inteligência Artificial** para tornar o acesso às informações mais rápido e eficiente.
 
 Principais recursos:
 - Digitalização automática de documentos via OCR;
