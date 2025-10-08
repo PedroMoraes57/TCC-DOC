@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-    --vermelho: #C84630; /* Tom de vermelho ajustado para a referência */
+    --vermelho: #AE2C12;
     --preto-texto: #333333;
     --cinza-texto: #5D5D5D;
     --cinza-subtexto: #999;
@@ -28,7 +28,7 @@ body {
 .banner-area {
     width: 100%;
     height: 280px;
-    background-image: url('../img/banner.png'); /* Certifique-se que o caminho está correto */
+    background-image: url('../img/banner.png');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -42,14 +42,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Sobreposição escura */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
 }
 
 /* --- CONTAINER PRINCIPAL --- */
 .main-content-wrapper {
     max-width: 1100px;
-    margin: -160px auto 50px auto; /* Puxa para cima para sobrepor o banner */
+    margin: -160px auto 50px auto;
     padding: 0 20px;
     position: relative;
     z-index: 2;
@@ -58,10 +58,10 @@ body {
 /* --- SEÇÃO DO PERFIL --- */
 .profile-section {
     display: flex;
-    align-items: flex-end; /* Alinha pela base */
+    align-items: flex-end;
     gap: 30px;
     margin-bottom: 20px;
-    padding-left: 20px; /* Espaço para a foto não colar na borda */
+    padding-left: 20px;
 }
 
 .profile-pic {
@@ -74,7 +74,7 @@ body {
 
 .profile-info {
     padding-bottom: 20px;
-    width: 100%; /* Garante que o container ocupe o espaço para o alinhamento */
+    width: 100%;
 }
 
 .profile-info h1 {
@@ -89,7 +89,7 @@ body {
 
 .edit-profile-btn {
     display: inline-flex;
-    align-items: center;
+    align-items:center ;
     justify-content: center;
     width: 40px;
     height: 40px;
@@ -99,14 +99,21 @@ body {
     text-decoration: none;
     font-size: 1rem;
     transition: background-color 0.3s ease;
-    margin-left: auto; /* Empurra o botão para a direita */
+    margin-left: auto;
 }
 
 .edit-profile-btn:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-.profile-info p {
+.profile-info p #email{
+    margin-top: 5px;
+    font-size: 1rem;
+    color: var(--cinza-texto);
+    line-height: 1.6;
+}
+
+.profile-info p #tel{
     font-size: 1rem;
     color: var(--cinza-texto);
     line-height: 1.6;
@@ -122,7 +129,7 @@ body {
     background-color: var(--branco);
     border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.20);
 }
 
 .section-header {
@@ -138,20 +145,29 @@ body {
     color: var(--vermelho);
 }
 
-.search-box {
+/* Barra de pesquisa dentro da seção de documentos */
+.digital-documents-section .search-box {
     position: relative;
     width: 300px;
 }
 
-.search-box input {
+.digital-documents-section .search-box input {
     width: 100%;
     padding: 10px 40px 10px 15px;
     border: 1px solid var(--borda-suave);
     border-radius: 25px;
     font-size: 0.9rem;
+    color: #000000; /* Texto digitado preto */
+    background-color: var(--branco); /* Fundo branco */
 }
 
-.search-box .fa-search {
+/* Placeholder preto apenas dentro da seção de documentos */
+.digital-documents-section .search-box input::placeholder {
+    color: #000000;
+    opacity: 1;
+}
+
+.digital-documents-section .search-box .fa-search {
     position: absolute;
     right: 15px;
     top: 50%;
@@ -163,7 +179,7 @@ body {
 .documents-table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 12px; /* Espaço vertical entre as linhas/cards */
+    border-spacing: 0 12px;
 }
 
 .documents-table thead th {
@@ -187,14 +203,13 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
 .documents-table tbody td {
     padding: 18px 15px;
     font-size: 0.95rem;
     color: var(--preto-texto);
     vertical-align: middle;
-    border: none; /* Remove bordas de célula */
-    border-bottom: 1px solid var(--borda-suave); /* Apenas uma linha sutil */
+    border: none;
+    border-bottom: 1px solid var(--borda-suave);
 }
 
 .documents-table tbody tr td:first-child {
@@ -209,8 +224,9 @@ body {
 }
 
 /* Remove a borda inferior da linha */
-.documents-table tbody tr td { border-bottom: none; }
-
+.documents-table tbody tr td {
+    border-bottom: none;
+}
 
 /* Estiliza o subtítulo (data/hora) */
 .documents-table tbody td span {
@@ -229,24 +245,157 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.3rem; /* Ícones maiores */
+    font-size: 1.3rem;
     color: var(--cinza-texto);
     transition: color 0.2s ease;
-    margin-left: 20px; /* Espaçamento entre ícones */
+    margin-left: 20px;
     text-decoration: none;
     display: inline-block;
 }
 
 .action-btn.download-btn:hover {
-    color: #2980b9; /* Azul para download */
+    color: #2980b9;
 }
 
 .action-btn.delete-btn:hover {
-    color: var(--vermelho); /* Vermelho para deletar */
+    color: var(--vermelho);
 }
 
 .no-documents-found {
     text-align: center;
     padding: 40px;
     color: var(--cinza-texto);
+}
+
+
+
+.modal {
+    position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  }
+  
+.hidden { display: none; }
+  
+.modal-content {
+    background: #fff;
+    color: #000000;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 0 25px rgba(0,0,0,0.3);
+    animation: show .3s ease;
+}
+  
+@keyframes show {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+ }
+  
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+  
+.close-btn:hover { color: #AE2C12; }
+  
+.save-btn {
+    background: #AE2C12;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    background: #8b210d;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="email"]{
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background-color: #fafafa;
+}
+
+.profile-pic-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-top: 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    max-width: 500px;
+}
+  
+.profile-pic-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    max-width: 500px;
+}
+
+.pic-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+  }
+  
+.profile-pic-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    max-width: 500px;
+}
+  
+.profile-pic-container:hover img {
+    filter: brightness(0.6);
+}
+  
+.profile-pic-container .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+}
+  
+.profile-pic-container:hover .overlay {
+    opacity: 1;
 }

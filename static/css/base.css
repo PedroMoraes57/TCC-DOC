@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -10,7 +9,7 @@
     scroll-behavior: smooth;
 }
 
-:root{
+:root {
     --vermelho: #AE2C12;
     --amarelo: #FFc16E;
     --azul-escuro: #282f36;
@@ -23,27 +22,25 @@
     --branco_puro: #FFFFFF;
 }
 
-
-/* ESTILIZAÇÃO DO HEADER */
-  
-  
-  /* Header especial da landing */
-
-body{
+/* BODY */
+body {
     background-color: var(--branco);
 }
 
-
-.header{
+/* HEADER */
+.header {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     gap: 30%;
     background-color: var(--vermelho);
     transition: background 0.3s ease;
+    position: relative;
+    overflow: visible;
+    z-index: 1000;
 }
 
-.left-header img{
+.left-header img {
     width: 100px;
     height: auto;
     margin-top: 10px;
@@ -51,12 +48,11 @@ body{
     cursor: pointer;
 }
 
-  
-
-.left-header{
+.left-header {
     display: flex;
     align-items: center;
 }
+
 .left-header a {
     text-decoration: none;
     font-size: 20px;
@@ -74,7 +70,7 @@ body{
     bottom: 0;
     width: 0%;
     height: 2px;
-    background: var(--branco); /* <<< define a cor */
+    background: var(--branco);
     transition: width 0.3s ease;
 }
 
@@ -82,12 +78,12 @@ body{
     width: 100%;
 }
 
-.right-header{
+.right-header {
     display: flex;
     align-items: center;
 }
 
-.nav-right{
+.nav-right {
     display: flex;
     align-items: center;
     gap: 40px;
@@ -96,9 +92,9 @@ body{
 .search-box {
     position: relative;
     display: inline-block;
-    width: 300px; /* ajuste */
-  }
-  
+    width: 300px;
+}
+
 .search-box input {
     padding: 8px;
     border: 1.5px solid var(--branco);
@@ -109,18 +105,18 @@ body{
     background-color: transparent;
     color: var(--branco);
 }
-  
+
 .search-box i {
     position: absolute;
-    right: 15px;   /* colado na direita */
+    right: 15px;
     top: 50%;
     font-size: 18px !important;
     transform: translateY(-50%);
     color: var(--branco);
-    pointer-events: none; /* ícone não atrapalha clique no input */
+    pointer-events: none;
 }
 
-.search-box input::placeholder{
+.search-box input::placeholder {
     color: var(--branco);
     font-size: 12px;
     padding: 3px;
@@ -132,15 +128,14 @@ body{
     appearance: none;
 }
 
-.right-header i{
+.right-header i {
     font-size: 30px;
     color: var(--branco);
     cursor: pointer;
 }
 
-
-/* ESTILIZAÇÃO DO FOOTER */
-.footer-principal{
+/* FOOTER */
+.footer-principal {
     background-color: var(--azul-escuro);
     color: var(--branco);
     padding: 100px 100px 50px 0;
@@ -149,7 +144,7 @@ body{
     flex-direction: column;
 }
 
-.footer{
+.footer {
     color: var(--branco);
     width: 100%;
     height: 450px;
@@ -157,19 +152,19 @@ body{
     justify-content: space-around;
 }
 
-.footer-nav{
+.footer-nav {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 10px;
 }
 
-.footer-nav h4{
+.footer-nav h4 {
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.footer-nav a{
+.footer-nav a {
     text-decoration: none;
     color: var(--branco);
     font-size: 16px;
@@ -186,7 +181,7 @@ body{
     bottom: 0;
     width: 0%;
     height: 1px;
-    background: var(--amarelo); /* <<< define a cor */
+    background: var(--amarelo);
     transition: width 0.3s ease;
 }
 
@@ -194,43 +189,176 @@ body{
     width: 60%;
 }
 
-.footer-nav a:hover{
+.footer-nav a:hover {
     color: var(--amarelo);
 }
 
-.footer-nav.redes{
+.footer-nav.redes {
     display: flex;
 }
-.redes-i{
+
+.redes-i {
     font-size: 30px;
     cursor: pointer;
     display: flex;
     gap: 30px;
 }
 
-.redes-i i{
+.redes-i i {
     transition: 0.2s all;
 }
-.redes-i i:hover{
+
+.redes-i i:hover {
     color: var(--amarelo);
 }
 
-.hr-footer{
+.hr-footer {
     margin-bottom: 20px;
     margin-left: 110px;
     margin-top: 50px;
 }
-.footer-down{
+
+.footer-down {
     margin-top: 10px;
     margin-left: 110px;
     display: flex;
     gap: 40px;
 }
-.footer-down a{
+
+.footer-down a {
     color: var(--branco);
     transition: 0.3s all;
 }
-.footer-down a:hover{
+
+.footer-down a:hover {
     color: var(--amarelo);
     text-decoration: underline;
+}
+
+/* --- MENU DO USUÁRIO (DROPDOWN) --- */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-icon {
+    font-size: 30px;
+    color: var(--branco);
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.user-icon:hover {
+    transform: scale(1.1);
+    color: var(--amarelo);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: var(--branco_puro);
+    min-width: 160px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1001;
+    animation: fadeIn 0.25s ease;
+}
+
+.dropdown-menu li {
+    list-style: none;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: var(--preto);
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--vermelho);
+    color: var(--branco);
+}
+
+/* --- ANIMAÇÃO SUAVE DE APARECIMENTO --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVO */
+@media (max-width: 500px) {
+    .dropdown-menu {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+}
+
+.logout-btn {
+    all: unset;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    color: var(--preto);
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: var(--vermelho);
+    color: var(--branco);
+}
+
+/* ====== CORREÇÃO DO MODAL E OVERLAY ====== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    position: relative;
+    z-index: 9999;
+    background: #1f1f1f;
+    padding: 30px 40px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: left;
+    color: white;
+    animation: pop 0.3s ease;
+}
+
+/* garante que nada esconda o modal */
+body,
+html {
+    overflow-x: hidden;
 }

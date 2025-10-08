@@ -49,6 +49,7 @@ main{
     height: 100vh;
     background-color: var(--branco_puro);
     border-radius: 3em;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.20);
 
 } 
 
@@ -77,7 +78,10 @@ form{
     cursor: pointer;
 
     h2, b{
+        text-align: center;
+        word-break: break-word; 
         color: var(--azul-escuro);
+        max-width: 90%;
     }
     p{
         color: var;
@@ -129,34 +133,97 @@ input[type="text"]{
 }
 
 #botao-enviar{
-    font-size: 1.5rem;
-    background-color: var(--vermelho);
+    font-size: 1.3rem;
+    background-color: rgb(16, 88, 16);
     color: var(--branco_puro);
-    font-weight: bold;
+    font-weight: 400;
     border: none;
     border-radius: 50px;
     height: 5.5vh;
     width: 10vw;
+    margin-left: 20px;
     cursor: pointer;
     transition: background-color 0.5s ease, transform 0.3s ease;
 }
 
 #botao-enviar:hover {
-    background-color: #821600;
+    background-color: rgb(23, 119, 23);
 }
 
 #botao-remover{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     background-color: var(--vermelho);
     color: var(--branco_puro);
-    border: 0.5px solid black;
+    border: 0;
     border-radius: 10px;
-    height: 5.5vh;
-    width: 15vw;
+    height: 5vh;
+    width: 12vw;
+    font-weight: 400;
     cursor: pointer;
     transition: background-color 0.5s ease, transform 0.3s ease;
 }
 
 #botao-remover:hover {
     background-color: #821600;
+}
+
+.spinner{
+    width: 155px;
+    height: 155px;
+    border: 25px solid #ccc;
+    border-top-color: #AE2C12;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+@keyframes spin{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-content{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #222;
+}
+
+.popup-content.success p{
+    color: #2e7d32;
+}
+
+.popup-content.error p{
+    color: #b71c1c;
+}
+
+#popup-close{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #888;
+}
+
+@keyframes fadeIn {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+@keyframes slideUp{
+    from{transform: translateY(15px); opacity:0;}
+    to {transform: translateY(0); opacity: 1;}
 }

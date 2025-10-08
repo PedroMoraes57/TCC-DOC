@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,72 +8,61 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <script src="https://kit.fontawesome.com/44090f5f38.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    <title>Login e Cadastro D.O.C</title>
+    <title>Login | D.O.C</title>
   </head>
+  <style>
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    </style>
   <body>
-    <!-- Botão voltar -->
     <a href="{% url 'home' %}" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
 
-    <div class="container">
-      <div class="forms-container">
-        <div class="signin-signup">
-          <form action="#" class="sign-in-form">
-            <h2 class="title">Fazer Login</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nome de Usuário" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <input type="submit" value="Fazer Login" class="btn solid" />
-          </form>
-          <form action="#" class="sign-up-form">
-            <h2 class="title">Fazer Cadastro</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nome de Usuário" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <input type="submit" class="btn" value="Cadastrar" />
-          </form>
+    <section class="login">
+      <div class="bola-superior">
+        <div class="conteudo-bola">
+          <div class="texto-bola">
+            <h2>Não possui cadastro?</h2>
+            <p>Cadastre-se agora mesmo e aproveite todas as nossas funcionalidades!</p>
+            <a href="{% url 'cadastro' %}" class="btn-login">Cadastrar</a>
+          </div>
+          <div class="mascote">
+            <img src="{% static 'img/DOC-LOGIN.png' %}" alt="Mascote D.O.C">
+          </div>
         </div>
       </div>
-      <div class="panels-container">
-        <div class="panel left-panel">
-          <div class="content">
-            <h3>Não possui Cadastro?</h3>
-            <p>
-              Cadastre-se agora mesmo, e aproveite de todas as nossas funcionalidades!
-            </p>
-            <button class="btn transparent" id="sign-up-btn">
-              Cadastrar-se!
-            </button>
-          </div>
-          <img src="{% static 'img/DOC-LOGIN.png' %}" class="image" alt="" />
-        </div>
-        <div class="panel right-panel">
-          <div class="content">
-            <h3>Já possui login?</h3>
-            <p>
-              Entre agora mesmo e digitalize seus documentos!
-            </p>
-            <button class="btn transparent" id="sign-in-btn">
-              Fazer Login
-            </button>
-          </div>
-          <img src="{% static 'img/DOC-CADASTRO.png' %}" class="image" alt="" />
+
+      <div class="container-login">
+        <div class="form-login">
+          <h2>Login de Usuário</h2>
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="input-group">  
+              {{ form.username }}
+            </div>
+            <div class="input-group">
+              {{ form.password }}
+            </div>
+            <button type="submit" class="btn-submit">Fazer Login</button>
+          </form>
+
+          {% if form.errors %}
+            <div class="error-messages">
+              {% for field in form %}
+                {% for error in field.errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              {% endfor %}
+              {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
       </div>
-    </div>
-    <script src="{% static 'js/login.js' %}"></script>
+    </section>
+    
   </body>
 </html>

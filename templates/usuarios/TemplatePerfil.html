@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block style.css %}
-<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/perfil.css' %}" />
 {% endblock %}
 
@@ -14,17 +15,19 @@
 
 <div class="main-content-wrapper">
     <section class="profile-section">
-        <img class="profile-pic" src="{% static 'img/PERFILZINHO.png' %}" alt="Foto de perfil" />
+        {% if request.user.foto_perfil %}
+        <img class="profile-pic" src="{{ request.user.foto_perfil.url }}" alt="Foto de perfil">
+        {% else %}
+        <img class="profile-pic" src="{% static 'img/default-user.jpg' %}" alt="Foto de perfil">
+        {% endif %}
+
         <div class="profile-info">
-            <h1>
-                {{ user.first_name }} {{ user.last_name }}
-                <a href="#" class="edit-profile-btn" title="Editar Perfil"><i class="fas fa-pencil-alt"></i></a>
-            </h1>
-            <p><strong>E-mail:</strong> {{ user.email }}</p>
-            <p><strong>Telefone:</strong> {{ user.perfil.telefone }}</p>
+            <h1>{{ user.nome }}<a href="#" class="edit-profile-btn" title="Editar Perfil"><i class="fas fa-pencil-alt"></i></a></h1>
+            <p id="email"><strong>E-mail:</strong> {{ user.email }}</p>
+            <p id="tel"><strong>Telefone:</strong> {{ user.telefone }}</p>
         </div>
     </section>
-
+<br><br>
     <section class="digital-documents-section">
         <div class="section-header">
             <h2>Arquivos Digitalizados</h2>
@@ -43,33 +46,153 @@
                     <th>Assunto <i class="fas fa-sort"></i></th>
                 </tr>
             </thead>
+
             <tbody>
-                {% if documentos %}
-                    {% for doc in documentos %}
-                    <tr>
-                        <td>
-                            {{ doc.nome }}
-                            <span>{{ doc.data_criacao|date:"d/m, H:i" }}</span>
-                        </td>
-                        <td>{{ doc.tipo }}</td>
-                        <td>{{ doc.setor }}</td>
-                        <td>{{ doc.assunto }}</td>
-                        <td class="actions-cell">
-                            <a href="{{ doc.arquivo.url }}" class="action-btn download-btn" title="Baixar"><i class="fas fa-download"></i></a>
-                            <form action="{% url 'deletar_documento' doc.id %}" method="post" style="display: inline-block;">
-                                {% csrf_token %}
-                                <button type="submit" class="action-btn delete-btn" title="Excluir"><i class="fas fa-trash-alt"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                {% else %}
-                <tr>
-                    <td colspan="5" class="no-documents-found">Nenhum documento encontrado.</td>
-                </tr>
-                {% endif %}
-            </tbody>
+              {% if documentos %}
+                  {% for doc in documentos %}
+                      {% if doc.usuario == request.user %}
+                          <tr>
+                              <td>
+                                  <strong>{{ doc.nome }}</strong><br>
+                                  {% if doc.data_publicacao %}
+                                      Publicado em {{ doc.data_publicacao|date:"d/m/Y" }}
+                                  {% else %}
+                                      Publicado em —
+                                  {% endif %}
+                              </td>
+                              <td>{{ doc.tipo|default:"—" }}</td>
+                              <td>{{ doc.setor|default:"—" }}</td>
+                              <td>{{ doc.assunto|default:"—" }}</td>
+                              <td class="actions-cell">
+                                  <a href="{{ doc.arquivo.url }}" class="action-btn download-btn" title="Baixar">
+                                      <i class="fas fa-download"></i>
+                                  </a>
+                                  <form action="{% url 'deletar_documento' doc.id %}" method="post" style="display:inline;">
+                                      {% csrf_token %}
+                                      <button type="submit" class="action-btn delete-btn" title="Excluir">
+                                          <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                  </form>
+                              </td>
+                          </tr>
+                      {% endif %}
+                  {% endfor %}
+              {% else %}
+                  <tr>
+                      <td colspan="5" class="no-documents-found">Nenhum documento encontrado.</td>
+                  </tr>
+              {% endif %}
+          </tbody>          
         </table>
     </section>
+
+    <div id="modal-edit" class="modal hidden">
+        <div class="modal-content">
+          <span class="close-btn" id="closeModal">&times;</span>
+          <h2>Editar Perfil</h2> <br>
+      
+          <form method="POST" enctype="multipart/form-data" action="{% url 'perfil_editar' %}">
+            {% csrf_token %}
+
+            <div class="pic-wrapper">
+              <div class="profile-pic-container">
+                <label for="fotoPerfilInput" class="profile-pic-label">
+                  {% if user.foto_perfil %}
+                    <img id="preview" src="{{ user.foto_perfil.url }}" alt="Foto de perfil">
+                  {% else %}
+                    <img id="preview" src="{% static 'img/default-user.jpg' %}" alt="Foto de perfil">
+                  {% endif %}
+                  <div class="overlay">Alterar</div>
+                </label>
+                <input type="file" id="fotoPerfilInput" name="foto_perfil" accept="image/*" hidden>
+              </div>
+            </div>
+<br>
+            <label>Nome:</label>
+            <input type="text" name="nome" value="{{ user.nome }}" required><br><br>
+      
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ user.email }}" required><br><br>
+      
+            <label>Telefone:</label>
+            <input type="text" name="telefone" value="{{ user.telefone }}" required><br><br>
+      
+            <button type="submit" class="save-btn">Salvar Alterações</button>
+          </form>
+        </div>
+      </div>
+
 </div>
+
+<!-- SCRIPT DE ORDENAÇÃO -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const tabela = document.querySelector(".documents-table");
+  if (!tabela) return;
+
+  const cabecalhos = tabela.querySelectorAll("thead th");
+  const tbody = tabela.querySelector("tbody");
+
+  cabecalhos.forEach((th, index) => {
+    th.style.cursor = "pointer"; // mostra que dá pra clicar
+
+    th.addEventListener("click", () => {
+      const linhas = Array.from(tbody.querySelectorAll("tr"));
+      const asc = !th.classList.contains("asc"); // alterna crescente/decrescente
+
+      // limpa classes dos outros th
+      cabecalhos.forEach(h => h.classList.remove("asc", "desc"));
+      th.classList.add(asc ? "asc" : "desc");
+
+      // ordena
+      linhas.sort((a, b) => {
+        const A = a.children[index]?.innerText.trim().toLowerCase() || "";
+        const B = b.children[index]?.innerText.trim().toLowerCase() || "";
+
+        // se for número
+        const numA = parseFloat(A.replace(',', '.'));
+        const numB = parseFloat(B.replace(',', '.'));
+        if (!isNaN(numA) && !isNaN(numB)) {
+          return asc ? numA - numB : numB - numA;
+        }
+
+        // texto
+        return asc ? A.localeCompare(B) : B.localeCompare(A);
+      });
+
+      // reinsere linhas na nova ordem
+      linhas.forEach(l => tbody.appendChild(l));
+    });
+  });
+});
+
+
+const modal = document.getElementById("modal-edit");
+const editBtn = document.querySelector(".edit-profile-btn");
+const closeModalBtn = document.getElementById("closeModal");
+
+editBtn.addEventListener("click", e => {
+  e.preventDefault();
+  modal.classList.remove("hidden");
+});
+
+closeModalBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+
+window.addEventListener("click", e => {
+  if (e.target === modal) modal.classList.add("hidden");
+});
+
+document.getElementById('fotoPerfilInput').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const preview = document.getElementById('preview');
+    preview.src = URL.createObjectURL(file);
+  }
+});
+
+
+</script>
+
 {% endblock %}

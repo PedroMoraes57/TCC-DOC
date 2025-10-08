@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--fonte);
+}
+
+:root {
+  --vermelho: #AE2C12;
+  --amarelo: #FFc16E;
+  --azul-escuro: #282f36;
+  --cinza-escuro: #3A444D;
+  --cinza-claro: #5D5D5D;
+  --preto: #07111D;
+  --branco-amarelado: #E4E5DF;
+  --branco: #EFEFEF;
+  --fonte: 'Poppins';
+  --fundo-input: #dadada;
+}
+
+body {
+  background-color: var(--branco);
+  overflow-x: hidden;
+}
+
+/* --- BOTÃO VOLTAR --- */
+.btn-voltar {
+  position: absolute;
+  top: 1.8519vh;
+  left: 1.8519vh;
+  font-size: 2vh;
+  padding: 1vh;
+  color: var(--preto);
+  text-decoration: none;
+}
+
+/* --- BOLA E FUNDO DIREITO --- */
+.bola-superior {
+  position: absolute;
+  top: -32vh;
+  right: -18vh;
+  width: 90vh;
+  height: 90vh;
+  background-color: var(--azul-escuro);
+  border-radius: 50%;
+  z-index: -1;
+  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- MASCOTE --- */
+.mascote img {
+  position: absolute;
+  bottom: -42vh;
+  right: 16.7037vh;
+  width: auto;
+  height: 70.8148vh;
+  z-index: 100;
+}
+
+/* --- TEXTO NA BOLA (DIREITA) --- */
+.texto-bola {
+  position: absolute;
+  top: 40vh;
+  right: 28vh;
+  color: var(--branco);
+  font-size: 2.4vh;
+  width: 45vh;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.texto-bola h2 {
+  font-weight: 700;
+  font-size: 3.5vh;
+}
+
+.texto-bola p {
+  font-size: 1.7vh;
+  font-weight: 400;
+  margin-top: 1vh;
+}
+
+/* --- BOTÃO "FAZER LOGIN" --- */
+.btn-login {
+  display: inline-block;
+  margin-top: 2vh;
+  padding: 1.2vh 4vh;
+  background: transparent;
+  border: 2px solid var(--branco);
+  border-radius: 50px;
+  color: var(--branco);
+  font-size: 1.8vh;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.btn-login:hover {
+  background-color: var(--branco);
+  color: var(--azul-escuro);
+  transform: scale(1.05);
+}
+
+/* --- CONTAINER DO FORMULÁRIO (ESQUERDA) --- */
+.container-cadastro {
+  position: absolute;
+  left: 32vh;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.form-cadastro h2 {
+  color: var(--azul-escuro);
+  font-size: 4vh;
+  margin-bottom: 2vh;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* --- CAMPOS DO FORMULÁRIO --- */
+.input-group input, .form-control{
+  margin-bottom: 2vh;
+  height: 6vh;
+  width: 49vh;
+  outline: none;
+  border: none;
+  background-color: var(--fundo-input);
+  color: var(--preto); 
+  border-radius: 5vh;
+  padding: 2vh;
+  font-size: 1.8vh;
+  margin-bottom: 2.5vh;
+  text-align: left;
+}
+
+select[name="pais"]{
+  margin-bottom: 2vh;
+  height: 6vh;
+  width: 49vh;
+  outline: none;
+  border: none;
+  background-color: var(--fundo-input);
+  color: var(--preto); 
+  border-radius: 5vh;
+  padding: 2vh;
+  font-size: 1.8vh;
+  margin-bottom: 2.5vh;
+  text-align: left;
+}
+
+.input-group input[type="file"]{
+  margin-bottom: 2vh;
+  height: 6vh;
+  width: 49vh;
+  outline: none;
+  border: none;
+  background-color: var(--fundo-input);
+  border-radius: 5vh;
+  padding: 2vh;
+  font-size: 1.8vh;
+  margin-bottom: 2.5vh;
+  text-align: left;
+}
+
+/* --- BOTÃO "CADASTRAR" --- */
+.btn-submit {
+  background-color: var(--vermelho);
+  height: 5.5vh;
+  width: 25vh;
+  text-align: center;
+  color: var(--branco);
+  font-size: 1.8vh;
+  border-radius: 5vh;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s all;
+  font-weight: bold;
+  margin-top: 1vh;
+}
+
+.btn-submit:hover {
+  background-color: rgb(116, 19, 19);
+  transform: scale(1.05);
+}
+
+/* --- MENSAGENS DE ERRO --- */
+.error-messages {
+  color: var(--vermelho);
+  margin-top: 1.5vh;
+  font-size: 1.4vh;
+}

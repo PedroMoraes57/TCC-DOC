@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <script src="https://kit.fontawesome.com/44090f5f38.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}" />
+    <title>Cadastro | D.O.C</title>
+  </head>
+
+  <body data-barba="wrapper">
+    <main data-barba="container" data-barba-namespace="cadastro">
+      <a href="{% url 'home' %}" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+
+      <section class="cadastro">
+        <div class="bola-superior">
+          <div class="conteudo-bola">
+            <div class="texto-bola">
+              <h2>Você já possui login?</h2>
+              <p>Faça login agora mesmo e digitalize seus documentos!</p>
+              <a href="{% url 'login' %}" class="btn-login">Fazer Login</a>
+            </div>
+            <div class="mascote">
+              <img src="{% static 'img/DOC-CADASTRO.png' %}" alt="Mascote D.O.C">
+            </div>
+          </div>
+        </div>
+
+        <div class="container-cadastro">
+          <div class="form-cadastro">
+            <h2>Cadastro de Usuário</h2>
+            <form method="post" enctype="multipart/form-data" action="{% url 'cadastro' %}">
+              {% csrf_token %}
+              {{ form.non_field_errors }}
+
+              <div class="input-group">{{ form.nome }}</div>
+              <div class="input-group">{{ form.username }}</div>
+              <div class="input-group">{{ form.email }}</div>
+              <div class="input-group">{{ form.telefone }}</div>
+              <div class="input-group">{{ form.pais }}</div>
+              <div class="input-group">{{ form.foto_perfil }}</div>
+              <div class="input-group">{{ form.password1 }}</div>
+              <div class="input-group">{{ form.password2 }}</div>
+
+              <button type="submit" class="btn-submit">Cadastrar</button>
+            </form>
+
+            {% if form.errors %}
+              <div class="error-messages">
+                {% for field in form %}
+                  {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                  {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

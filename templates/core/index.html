@@ -2,271 +2,223 @@
 {% load static %}
 
 {% block header_class %}landing-header{% endblock %}
-{% block main_class %}{% endblock %}  {# sem padding, hero ocupa a tela inteira #}
-{% block style.css %}<link rel='stylesheet' type='text/css' media='screen' href='{% static "css/style.css" %}'>{% endblock %}
-{% block header.js %}<script src="{% static 'js/header.js' %}"></script>{% endblock %}
+{% block main_class %}{% endblock %}
+{% block style.css %}
+<link rel='stylesheet' type='text/css' media='screen' href='{% static "css/style.css" %}'>
+{% endblock %}
+{% block header.js %}
+<script src="{% static 'js/header.js' %}"></script>
+{% endblock %}
 {% block title %}Página Inicial - D.O.C{% endblock %}
+
 {% block content %}
-    <section class="hero" >
-            <div class="hero-content">
-                <h1 id="frase" data-aos="fade-up">
-                    Mais <span class="spanHERO">praticidade</span>, mais <span class="spanHERO">segurança</span> e seus documentos sempre ao seu alcance com <span class="spanHERO">apenas um clique</span>.
-                </h1>
-                <div class="hero-buttons"data-aos="fade-up">
-                    <a href="{% url 'Digitalizar_Documentos'%}" class="btn1">Digitalize Agora!</a>
-                    <a href="#oqcomo" class="btn2">Saiba Mais</a>
-                </div>
-                
-                <div class="overlay"></div>
-        </div>
-        <br><br><br>
-        <hr id="linha">
-        <br><br><br>
-        <div class="glass">
-            <div class="info-item">
-                <h1 class="num">99%</h1>
-                <p class="tex">Precisão OCR</p>
-            </div>
 
-            <div class="info-item">
-                <h1 class="num">1K</h1>
-                <p class="tex">Empresas</p>
-            </div>
-
-            <div class="info-item">
-                <h1 class="num">99%</h1>
-                <p class="tex">Precisão IA</p>
-            </div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 id="frase" data-aos="fade-up">
+            Mais <span class="spanHERO">praticidade</span>, mais <span class="spanHERO">segurança</span> e seus documentos sempre ao seu alcance com <span class="spanHERO">apenas um clique</span>.
+        </h1>
+        <div class="hero-buttons" data-aos="fade-up">
+            <a href="{% url 'Digitalizar_Documentos'%}" class="btn1">Digitalize Agora!</a>
+            <a href="#oqcomo" class="btn2">Saiba Mais</a>
         </div>
-    </section>
-    <br><br>
-    <!-- VANTAGENS -->
-    <section id="vantagens" data-aos="fade-up">
-        <h2>Vantagens do D.O.C</h2>
-        <ul>
-            <li>
-                <i class="fa-solid fa-leaf"></i>
-                <h3>Sustentabilidade</h3>
-                <p>Reduz o uso de papel e libera espaço fisico ajudando a natureza.</p>
-            </li>
-            <li>
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>Segurança</h3>
-                <p>Armazena tudo com proteção e evita perdas de arquivos.</p>
-            </li>
-            <li>
-                <i class="fa-solid fa-file"></i>
-                <h3>Agilidade</h3>
-                <p>Digitaliza e organiza documentos rápido, facilitando o dia a dia.</p>
-            </li>
-        </ul>
-    </section>
+        <div class="overlay"></div>
+    </div>
+
+    <br><br><br>
+    <hr id="linha">
+    <br><br><br>
+
+    <div class="glass">
+        <div class="info-item">
+            <h1 class="num">99%</h1>
+            <p class="tex">Precisão OCR</p>
+        </div>
+
+        <div class="info-item">
+            <h1 class="num">1K</h1>
+            <p class="tex">Empresas</p>
+        </div>
+
+        <div class="info-item">
+            <h1 class="num">99%</h1>
+            <p class="tex">Precisão IA</p>
+        </div>
+    </div>
+</section>
+
+<br><br>
+
+<!-- VANTAGENS -->
+<section id="vantagens" data-aos="fade-up">
+    <h2>Vantagens do D.O.C</h2>
+    <ul>
+        <li>
+            <i class="fa-solid fa-leaf"></i>
+            <h3>Sustentabilidade</h3>
+            <p>Reduz o uso de papel e libera espaço físico ajudando a natureza.</p>
+        </li>
+        <li>
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Segurança</h3>
+            <p>Armazena tudo com proteção e evita perdas de arquivos.</p>
+        </li>
+        <li>
+            <i class="fa-solid fa-file"></i>
+            <h3>Agilidade</h3>
+            <p>Digitaliza e organiza documentos rápido, facilitando o dia a dia.</p>
+        </li>
+    </ul>
+</section>
 
 <br><br><br>
 
 <!-- O QUE É E COMO FUNCIONA -->
-    <section id="oqcomo" data-aos="fade-up">
-        <div id="oq">
-            <div class="texto">
-                <h2 class="tit-oqcomo">O que é o D.O.C.?</h2>
-                <p class="tex-oqcomo">A D.O.C. é uma plataforma desenvolvida para simplificar a <span class="spanoq">gestão de documentos</span>. Nosso sistema utiliza digitalização e 
-                    inteligência artificial para <span class="spanoq">organizar, classificar e facilitar o acesso a arquivos de forma rápida</span>, segura e eficiente. Nosso compromisso é oferecer 
-                    praticidade,<span class="spanoq">agilidade e confiabilidade</span>  para instituições e usuários no dia a dia.</p>
-            </div>
-            <div class="imagem1">
-                <img src="{% static 'img/aviaozinho.png' %}" alt="">
-            </div>
+<section id="oqcomo" data-aos="fade-up">
+    <div id="oq">
+        <div class="texto">
+            <h2 class="tit-oqcomo">O que é o D.O.C.?</h2>
+            <p class="tex-oqcomo">
+                A D.O.C. é uma plataforma desenvolvida para simplificar a <span class="spanoq">gestão de documentos</span>.
+                Nosso sistema utiliza digitalização e inteligência artificial para <span class="spanoq">organizar, classificar e facilitar o acesso</span> de forma rápida, segura e eficiente.
+            </p>
         </div>
-        <br>
-        <br>
-        <hr>
-        <br>
-        <br>
-        <div id="como">
-            <div class="imagem2">
-                <img src="{% static 'img/folhas.png' %}" alt="">
-            </div>
-            <div id="texto">
-                <h2 class="tit-oqcomo">Como funciona?</h2>
-                <p class="tex-oqcomo">O D.O.C. <span class="spanoq">simplifica o processo de gestão de documentos</span>. Você envia seus arquivos para a plataforma e o sistema, por meio 
-                    de OCR e inteligência artificial, faz a leitura, organiza e classifica automaticamente. Assim, todos os documentos ficam reunidos em um só lugar, 
-                    podendo ser encontrados facilmente por <span class="spanoq">filtros ou pela busca inteligente</span>. Tudo de forma rápida, segura e acessível.</p>
-            </div>
+        <div class="imagem1">
+            <img src="{% static 'img/aviaozinho.png' %}" alt="">
         </div>
-    </section>
-    <br> <br>
+    </div>
 
-<!--FEEDBACKS-->
-    <section id="feedbacks" data-aos="fade-up">
-        <div class="under">
-            <h2>O que nossos usuários estão achando?</h2>
-            <p>Veja as avaliações do nosso serviço</p>
+    <br><br><hr><br><br>
 
-            <!-- Modal -->
-            <div class="modal-overlay" id="modalOverlay">
-                <div class="modal">
-                <button class="close" id="closeModal">&times;</button>
-                <form method="post" enctype="multipart/form-data" id="feedbackForm">
-                    {% csrf_token %}
+    <div id="como">
+        <div class="imagem2">
+            <img src="{% static 'img/folhas.png' %}" alt="">
+        </div>
+        <div id="texto">
+            <h2 class="tit-oqcomo">Como funciona?</h2>
+            <p class="tex-oqcomo">
+                O D.O.C. <span class="spanoq">simplifica o processo de gestão de documentos</span>.
+                Você envia seus arquivos e o sistema usa OCR e IA para ler, organizar e classificar automaticamente.
+            </p>
+        </div>
+    </div>
+</section>
 
-                    <div class="stars" id="starContainer">
-                    <span class="star" data-value="1">★</span>
-                    <span class="star" data-value="2">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="5">★</span>
-                    </div>
+<br><br>
 
-                    <input type="hidden" name="rating" id="ratingInput">
-                    <textarea name="comment" placeholder="Escreva seu feedback..." required></textarea>
-                    <button class="btn1" type="submit" style="margin-top: 15px;">Enviar</button>
-                </form>
-                </div>
-            </div>
+<!-- FEEDBACKS -->
+<section id="feedbacks" data-aos="fade-up">
+    <div class="under">
+        <h2>O que nossos usuários estão achando?</h2>
+        <p>Veja as avaliações do nosso serviço</p>
 
-            <!-- Carrossel -->
-            <div class="carousel-container">
-                <button class="carousel-btn prev" id="prevBtn">‹</button>
-                <div class="carousel-track" id="carouselTrack">
+        <!-- Carrossel -->
+        <div class="carousel-container">
+            <button class="carousel-btn prev" id="prevBtn">‹</button>
+            <div class="carousel-track" id="carouselTrack">
                 {% for fb in feedbacks %}
-                    <div class="feedback-card">
-                    {% if fb.photo %}
-                        <img src="{{ fb.photo.url }}" alt="{{ fb.name }}">
+                <div class="feedback-card">
+                    {% if fb.usuario.foto_perfil %}
+                        <img src="{{ fb.usuario.foto_perfil.url }}" alt="{{ fb.usuario.nome }}">
                     {% else %}
                         <img src="https://via.placeholder.com/70?text=User" alt="sem foto">
                     {% endif %}
-                    <h3>{{ fb.name }}</h3>
-                    <div class="stars-display">{"★"|repeat:fb.rating}</div>
-                    <p>{{ fb.comment }}</p>
+                    <h3>{{ fb.usuario.nome }}</h3>
+                    <div class="stars-display">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= fb.rating %}
+                                <span style="color:#ffca08;">★</span>
+                            {% else %}
+                                <span style="color:#ccc;">★</span>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                {% empty %}
-                    <div class="feedback-card"><p>Nenhum feedback ainda</p></div>
-                {% endfor %}
+                    <p>{{ fb.comment }}</p>
                 </div>
-                <button class="carousel-btn next" id="nextBtn">›</button>
+                {% empty %}
+                <div class="feedback-card"><p>Nenhum feedback ainda</p></div>
+                {% endfor %}
             </div>
+            <button class="carousel-btn next" id="nextBtn">›</button>
+        </div>
 
-            <button class="btn1" id="openModalBtn">Avalie agora!</button>
-
+        <button class="btn1" id="openModalBtn">Avalie agora!</button>
         <br><br>
-    </section>
+    </div>
+</section>
+
+<!-- MODAL MOVIDO PARA FORA DAS SECTIONS -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="close" id="closeModal">&times;</button>
+        <form method="post" enctype="multipart/form-data" id="feedbackForm">
+            {% csrf_token %}
+            <div class="stars" id="starContainer" style="display:flex; flex-direction:row-reverse; justify-content:center;">
+                <span class="star" data-value="5">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="1">★</span>
+            </div>
+            <input type="hidden" name="rating" id="ratingInput">
+            <textarea name="comment" placeholder="Escreva seu feedback..." required></textarea>
+            <button class="btn1" type="submit" style="margin-top: 15px;">Enviar</button>
+        </form>
+    </div>
+</div>
+
 <br><br>
 
-<!--FAQs-->
+<!-- FAQs -->
 <section id="faqs" data-aos="fade-down">
     <h2>Está com dúvidas?</h2>
     <p>Nossas FAQs estão aqui para ajudar!</p>
     <br><br>
 
     <div class="faq-item">
-        <button class="faq-question">
-            Como funciona a digitalização de documentos?
-            <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-            <p>A digitalização converte seus documentos físicos em arquivos digitais, que podem ser organizados e acessados facilmente.</p>
-        </div>
+        <button class="faq-question">Como funciona a digitalização de documentos?<span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>A digitalização converte seus documentos físicos em arquivos digitais.</p></div>
     </div>
-
     <div class="faq-item">
-        <button class="faq-question">
-            Posso pesquisar documentos usando palavras comuns ou datas?
-            <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-            <p>Sim! Nosso sistema permite buscas por palavras-chave, datas ou filtros personalizados.</p>
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <button class="faq-question">
-            Meus documentos estão seguros no sistema?
-            <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-            <p>Sim, todos os arquivos são criptografados e armazenados com segurança de nível empresarial.</p>
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <button class="faq-question">
-            Posso enviar vários documentos ao mesmo tempo?
-            <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-answer">
-            <p>Sim, você pode enviar múltiplos documentos simultaneamente, sem perder organização ou qualidade.</p>
-        </div>
+        <button class="faq-question">Posso pesquisar documentos usando palavras comuns?<span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><p>Sim! Você pode buscar por palavras-chave, datas ou filtros personalizados.</p></div>
     </div>
 </section>
-    <br><br>
 
-<!--FINAL-->
-    <section class="finalista" data-aos="fade-down">
-        <p>Quer mais segurança e praticidade para seus arquivos?</p>
-        <h2>Experimente nossa digitalização e organize sua vida em segundos!</h2>
-        <a href="{% url 'Digitalizar_Documentos'%}" class="btn1 finalista-btn">Digitalize Agora!</a>
-    </section>
-    <br><br>
+<br><br>
 
-    <script>
-    const openModalBtn = document.getElementById("openModalBtn");
-    const modalOverlay = document.getElementById("modalOverlay");
-    const closeModal = document.getElementById("closeModal");
+<!-- FINAL -->
+<section class="finalista" data-aos="fade-down">
+    <p>Quer mais segurança e praticidade para seus arquivos?</p>
+    <h2>Experimente nossa digitalização e organize sua vida em segundos!</h2>
+    <a href="{% url 'Digitalizar_Documentos'%}" class="btn1 finalista-btn">Digitalize Agora!</a>
+</section>
+<br><br>
+<script>
+// ABRIR E FECHAR MODAL
+const openModalBtn = document.getElementById("openModalBtn");
+const modalOverlay = document.getElementById("modalOverlay");
+const closeModal = document.getElementById("closeModal");
 
-    if (openModalBtn && modalOverlay && closeModal) {
-        openModalBtn.addEventListener("click", () => {
-            modalOverlay.style.display = "flex";
-        });
+if (openModalBtn && modalOverlay && closeModal) {
+    openModalBtn.addEventListener("click", () => modalOverlay.style.display = "flex");
+    closeModal.addEventListener("click", () => modalOverlay.style.display = "none");
+    modalOverlay.addEventListener("click", e => { if (e.target === modalOverlay) modalOverlay.style.display = "none"; });
+}
 
-        closeModal.addEventListener("click", () => {
-            modalOverlay.style.display = "none";
-        });
+// SISTEMA DE ESTRELAS
+const stars = document.querySelectorAll(".star");
+const ratingInput = document.getElementById("ratingInput");
 
-        // Fecha se clicar fora da caixa
-        modalOverlay.addEventListener("click", (e) => {
-            if (e.target === modalOverlay) {
-                modalOverlay.style.display = "none";
-            }
-        });
-    }
-
-    // Sistema de estrelas (selecionar avaliação)
-    const stars = document.querySelectorAll(".star");
-    const ratingInput = document.getElementById("ratingInput");
-
-    stars.forEach(star => {
-        star.addEventListener("click", () => {
-            const rating = star.getAttribute("data-value");
-            ratingInput.value = rating;
-
-            stars.forEach(s => s.classList.remove("selected"));
-            for (let i = 0; i < rating; i++) {
-                stars[i].classList.add("selected");
-            }
-        });
+stars.forEach(star => {
+    star.addEventListener("click", () => {
+        const rating = parseInt(star.getAttribute("data-value"));
+        ratingInput.value = rating;
+        stars.forEach(s => s.classList.remove("selected"));
+        stars.forEach(s => { if (parseInt(s.getAttribute("data-value")) <= rating) s.classList.add("selected"); });
     });
+});
+</script>
 
-    document.querySelectorAll('.faq-item').forEach(item => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-        const arrow = item.querySelector('.faq-arrow');
-
-        question.addEventListener('click', () => {
-            const isOpen = answer.classList.contains('open');
-
-            // Fecha todas as outras
-            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-            document.querySelectorAll('.faq-arrow').forEach(ar => ar.style.transform = "rotate(0deg)");
-
-            // Abre ou fecha a clicada
-            if (!isOpen) {
-                answer.classList.add('open');
-                arrow.style.transform = "rotate(180deg)";
-            } else {
-                answer.classList.remove('open');
-                arrow.style.transform = "rotate(0deg)";
-            }
-        });
-    });
-      </script>
 {% endblock %}

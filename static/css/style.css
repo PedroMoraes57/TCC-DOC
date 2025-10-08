@@ -38,13 +38,13 @@ body{
 .hero{
     background-image: url('../img/banner.png');
     background-size: cover;
-    height: 1100px;
+    height: 1000px;
     text-align: center;
     padding-top: 200px;
 }
 
 .hero h1{
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
     color: var(--branco);
     max-width: 1100px;
@@ -121,7 +121,7 @@ body{
     /* Bordas arredondadas */
     border-radius: 20px;
     width: 1200px;
-    height: 360px;
+    height: 320px;
     margin-left: 350px;
     display: flex;
     position: relative;
@@ -137,7 +137,7 @@ body{
     inset: 0;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     background-size: 200px 200px;
-    opacity: 0.2; /* controla a intensidade do granulado */
+    opacity: 0.2;
     pointer-events: none;
 }
 
@@ -153,7 +153,7 @@ body{
 .info-item{
     display: inline;
     padding: 50px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 118px;
 }
 
@@ -225,8 +225,8 @@ body{
     display: flex;
     flex-direction: column;
     background-color: var(--azul-escuro);
-    height: 1400px;
-    padding: 100px;
+    height: 1000px;
+    padding: 90px;
 }
 
 #oq{
@@ -238,13 +238,13 @@ body{
 
 #oq h2{
     color: var(--amarelo);
-    font-size: 48px;
+    font-size: 44px;
     margin-bottom: 20px;
 }
 
 #oq p{
     color: var(--branco);
-    font-size: 28px;
+    font-size: 25px;
     max-width: 700px;
     text-align: justify;
 }
@@ -254,7 +254,7 @@ body{
 }
 #oq img{
     width: auto;
-    height: 400px;
+    height: 250px;
     transform: rotate(-15deg);
 }
 
@@ -265,7 +265,7 @@ body{
 
 
 #como{
-    padding: 50px;
+    padding: 40px;
     display: flex;
     justify-content: space-around;
     gap: 100px;
@@ -273,19 +273,19 @@ body{
 
 #como h2{
     color: var(--amarelo);
-    font-size: 48px;
+    font-size: 44px;
     margin-bottom: 20px;
-    text-align: right;
+    text-align: right; 
 }
 
 #como p{
     color: var(--branco);
-    font-size: 28px;
+    font-size: 25px;
 }
 
 #como img{
     width: auto;
-    height: 500px;
+    height: 300px;
 }
 
 #feedbacks{
@@ -295,20 +295,27 @@ body{
     align-items: center;
 }
 
-#feedbacks h2{
+#feedbacks {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#feedbacks h2 {
     color: var(--vermelho);
     text-align: center;
     font-size: 48px;
     padding-top: 50px;
 }
 
-#feedbacks p{
+#feedbacks p {
     color: var(--cinza-escuro);
     text-align: center;
     font-size: 25px;
 }
 
-  /* Modal */
+/* Modal */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -333,7 +340,9 @@ body{
     100% { transform: scale(1); opacity: 1; }
 }
 
-textarea, input[type="text"], input[type="file"] {
+textarea,
+input[type="text"],
+input[type="file"] {
     width: 100%;
     border-radius: 8px;
     padding: 8px;
@@ -344,8 +353,10 @@ textarea, input[type="text"], input[type="file"] {
     margin-top: 10px;
 }
 
+/* Estrelas do modal */
 .stars {
     display: flex;
+    flex-direction: row-reverse; /* faz o JS funcionar certo */
     justify-content: center;
     gap: 6px;
     margin: 10px 0;
@@ -355,10 +366,12 @@ textarea, input[type="text"], input[type="file"] {
     font-size: 28px;
     color: #555;
     cursor: pointer;
-    transition: 0.2s;
+    transition: color 0.2s ease;
 }
 
-.star.selected { color: gold; }
+.star.selected {
+    color: gold;
+}
 
 .close {
     background: none;
@@ -368,7 +381,7 @@ textarea, input[type="text"], input[type="file"] {
     cursor: pointer;
 }
 
-  /* Carrossel */
+/* Carrossel */
 .carousel-container {
     position: relative;
     width: 80%;
@@ -388,6 +401,9 @@ textarea, input[type="text"], input[type="file"] {
     padding: 25px;
     border-radius: 16px;
     text-align: center;
+    background: var(--branco);
+    color: var(--preto);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .feedback-card img {
@@ -398,8 +414,33 @@ textarea, input[type="text"], input[type="file"] {
     margin-bottom: 10px;
 }
 
-.stars-display { color: var(--amarelo); font-size: 20px; }
+.feedback-card h3 {
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--cinza-escuro);
+    margin-bottom: 5px;
+}
 
+.feedback-card p {
+    font-size: 16px;
+    color: var(--cinza-claro);
+    margin-top: 10px;
+}
+
+/* Estrelas exibidas nos feedbacks */
+.stars-display {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 5px;
+}
+
+.stars-display span {
+    font-size: 22px;
+    color: var(--amarelo);
+}
+
+/* Botões do carrossel */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -412,6 +453,11 @@ textarea, input[type="text"], input[type="file"] {
     width: 40px;
     height: 40px;
     cursor: pointer;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .prev { left: 10px; }
@@ -528,4 +574,36 @@ textarea, input[type="text"], input[type="file"] {
 .finalista .finalista-btn {
     margin: 0;
     text-decoration: none;
+}
+
+
+/* escuro do feedback */
+/* Overlay global (substitui o modal-overlay) */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#overlay.active {
+    display: flex;
+}
+
+/* Garante que o modal fica acima */
+#overlay .modal {
+    background: #1f1f1f;
+    padding: 30px 40px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: left;
+    color: white;
+    position: relative;
+    z-index: 10000;
 }

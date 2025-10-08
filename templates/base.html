@@ -1,56 +1,88 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{% block title %}Home | D.O.C{% endblock %}</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Ícones e estilos -->
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
-    <link rel='stylesheet' type='text/css' media='screen' href='{% static "css/base.css" %}'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <script src="{% static 'js/base.js' %}"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/44090f5f38.js" crossorigin="anonymous"></script>
+
+    <!-- Blocos para estilos adicionais -->
+    {% block style.css %}{% endblock %}
+    {% block digitalizar.css %}{% endblock %}
+    {% block digitalizar.js %}{% endblock %}
+    {% block header.js %}{% endblock %}
+
     <script>
         function voltarpaginainicial() {
             window.location.href = "{% url 'home' %}";
         }
-        </script>
-    {% block style.css %}{% endblock %}
-    {% block digitalizar.css%}{% endblock %}
-    {% block header.js %}{% endblock %}
-    <script src="https://kit.fontawesome.com/44090f5f38.js" crossorigin="anonymous"></script>
+    </script>
 </head>
+
 <body>
+    <!-- HEADER -->
     <header class="header {% block header_class %}{% endblock %}">
         <div class="left-header">
-            <img src="/static/img/logo-DOC.png" alt="logo-D.O.C" onclick="voltarpaginainicial()">
+            <img src="{% static 'img/logo-DOC.png' %}" alt="logo-D.O.C" onclick="voltarpaginainicial()">
             <nav class="nav-left">
-                <a href="{% url 'Digitalizar_Documentos'%}">Digitalizar</a>
-                <a href="{% url 'perfil' %}">Documentos</a>
+                <a href="{% url 'Digitalizar_Documentos' %}">Digitalizar</a>
+                <a href="{% url 'perfil' %}">Meus Documentos</a>
                 <a href="#">Quem Somos</a>
             </nav>
         </div>
+
         <div class="right-header">
             <nav class="nav-right">
                 <div class="search-box">
                     <input type="search" name="search" id="search" placeholder="Encontre seus documentos aqui...">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                </div>        
-                <i href="{% url 'perfil' %}" class="fa-solid fa-user"></i>          
+                </div>
+
+                <!-- MENU DO USUÁRIO -->
+                <div class="user-menu">
+                    <i class="fa-solid fa-user user-icon" id="userIcon"></i>
+                    <ul class="dropdown-menu" id="dropdownMenu">
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'perfil' %}">Meu Perfil</a></li>
+                            <li>
+                                <form action="{% url 'logout' %}" method="post" style="margin: 0;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="logout-btn">Sair</button>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li><a href="{% url 'login' %}">Entrar</a></li>
+                            <li><a href="{% url 'cadastro' %}">Cadastrar-se</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
     <main>
         {% block content %}
         {% endblock %}
     </main>
+
+    <!-- FOOTER -->
     <footer class="footer-principal">
         <div class="footer">
             <div class="footer-nav">
                 <img src="{% static 'img/logo-DOC.png' %}" alt="">
             </div>
+
             <div class="footer-nav">
                 <h4 class="topicos-footer">Navegação</h4>
                 <a href="#oqcomo" class="textos-footer">Sobre Nós</a>
@@ -59,20 +91,20 @@
                 <a href="#feedbacks" class="textos-footer">Avaliações</a>
                 <a href="#faqs" class="textos-footer">FAQs</a>
             </div>
-    
+
             <div class="footer-nav">
                 <h4 class="topicos-footer">Digitalização</h4>
-                <a href="{% url 'Digitalizar_Documentos'%}" class="textos-footer">Digitalizar Documento</a>
+                <a href="{% url 'Digitalizar_Documentos' %}" class="textos-footer">Digitalizar Documento</a>
                 <a href="{% url 'perfil' %}" class="textos-footer">Visualizar Documento</a>
             </div>
-    
+
             <div class="footer-nav">
                 <h4 class="topicos-footer">Sua Conta</h4>
                 <a href="{% url 'perfil' %}" class="textos-footer">Minha Conta</a>
                 <a href="{% url 'login' %}" class="textos-footer">Fazer Login</a>
-                <a href="{% url 'login' %}" class="textos-footer">Cadastrar-se</a>
+                <a href="{% url 'cadastro' %}" class="textos-footer">Cadastrar-se</a>
             </div>
-    
+
             <div class="footer-nav redes">
                 <h4 class="topicos-footer">Redes Sociais</h4>
                 <div class="redes-i">
@@ -82,17 +114,55 @@
                 </div>
             </div>
         </div>
+
         <br>
         <hr class="hr-footer">
+
         <div class="footer-down">
             <p>&copy;2025 D.O.C - Todos os direitos reservados</p>
-            <a href="">Política de Privacidade</a>
-            <a href="">Termos e Condições</a>
-            <a href="">Política de Cookies</a>
-       </div>
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos e Condições</a>
+            <a href="#">Política de Cookies</a>
+        </div>
     </footer>
+
+    <!-- OVERLAY ESCURO GLOBAL -->
+    <div class="overlay" id="overlay"></div>
+
     <script>
+        // MENU DO USUÁRIO
+        const userIcon = document.getElementById("userIcon");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        userIcon.addEventListener("click", () => {
+            dropdownMenu.style.display =
+                dropdownMenu.style.display === "block" ? "none" : "block";
+        });
+
+        window.addEventListener("click", (e) => {
+            if (!userIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.style.display = "none";
+            }
+        });
+
+        // AOS (animações de rolagem)
         AOS.init();
-      </script>
+
+        // Funções do overlay global
+        const overlay = document.getElementById("overlay");
+
+        function abrirOverlay() {
+            overlay.classList.add("active");
+        }
+
+        function fecharOverlay() {
+            overlay.classList.remove("active");
+        }
+
+        // Fecha o overlay se clicar fora do modal
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) fecharOverlay();
+        });
+    </script>
 </body>
 </html>
